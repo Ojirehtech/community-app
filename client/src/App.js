@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import 'react-image-crop/dist/ReactCrop.css';
-import './App.scss';
+// import './App.scss';
 import Auth from "./helper/Auth";
 import Home from './views/Community/Home';
 import Account from './views/Community/Account';

@@ -4,14 +4,13 @@ import { Link } from "react-router-dom";
 import { getTopic, likeTopic, unlikeTopic } from "../../store/actions/actions_topic";
 import { Row, Col, Spinner, Container } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Avatar, Image } from "antd";
+import { Avatar } from "antd";
 import { 
   faThumbsUp, 
   faThumbsDown, 
   faCircle,
   faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons'
-// import Avatar from "../../assets/img/user-avatar.png";
 import Header from "./Header";
 import Reply from "./Reply";
 import io from "socket.io-client";
@@ -20,6 +19,8 @@ import { getChats, likeChat, unlikeChat } from "../../store/actions/actions_chat
 import MessageList from "./MessageList";
 import PreviousMsg from "./PreviousMsg";
   
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 let socket;
 const TopicView = (props) => {
   const topic_id = window.location.pathname.slice(17);
@@ -32,7 +33,7 @@ const TopicView = (props) => {
   
   const [ topicId, setTopicId ] = useState(topic_id);
   const [ isOpen, setIsOpen ] = useState(false);
-  const url = "http://localhost:4000"; // "https://ojirehprime-community-api.herokuapp.com";
+  const url = process.env.REACT_APP_API; //"http://localhost:4000"; 
   const [ message, setMessage ] = useState("");
   const [ messages, setMessages ] = useState([]);
   const msg = useSelector(state => state.chat);
@@ -118,7 +119,6 @@ const TopicView = (props) => {
   const topicState = topic.topic && topic.topic;
   const currentTopic = topic.topic && topic.topic && topic.topic.topic;
   const chats = msg.chats;
-  const errorImage = <Avatar>{currentTopic && currentTopic.username && currentTopic.username.charAt(0).toUpperCase()}</Avatar>;
 
   return (
     <div>
@@ -176,7 +176,7 @@ const TopicView = (props) => {
                     display: "flex"
                   }}>
                     <Avatar 
-                      src={`${process.env.REACT_APP_API_URL}/v1/community/photo/${message.senderId}`}
+                      src={`${BASE_URL}/community/photo/${message.senderId}`}
                       size={50}
                     />
                   </div>

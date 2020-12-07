@@ -100,7 +100,7 @@ io.on("connection", socket => {
     callback(error);
   });
 
-  socket.on("disconnect", () => {
+  socket.on("disc", () => {
     deleteRoom(socket.id);
   });
 });

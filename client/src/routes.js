@@ -19,8 +19,7 @@ const PortfolioFile = React.lazy(() => import("./containers/components/Portfolio
 const TaskContainer = React.lazy(() => import("./containers/components/Tasks/TaskContainer"));
 const SalaryFile = React.lazy(() => import("./containers/components/salary/Salary"));
 const TaskListContainer = React.lazy(() => import('./containers/components/Tasks/TaskList'));
-// const BusinessDev = React.lazy(() => import('./containers/components/Business/BusinessDev'))
-// https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
+
 const routes = [
   // { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', exact: true, name: 'Dashboard', component: Dashboard },
@@ -46,3 +45,5 @@ const routes = [
 ];
 
 export default routes;
+
+
