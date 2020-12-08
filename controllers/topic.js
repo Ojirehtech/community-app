@@ -57,6 +57,7 @@ exports.getTopics = (req, res) => {
     .populate("createdBy", "fullname phone email")
     .populate("category", "name description")
     .then(topics => {
+      console.log(topics)
       if (!topics) return res.status(400).json({ error: "No records found" });
       res.json(topics);
     })

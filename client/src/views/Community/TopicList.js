@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Table, Spinner, Row, Col } from "reactstrap";
-import { Avatar, Image } from "antd";
-// import Avatar from "../../assets/img/user-avatar.png";
-// import Image from "react-image-resizer";
+import { Avatar } from "antd";
+
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const TopicList = ({ topicList }) => {
   return (
     <Table className="table table-strip">
@@ -15,7 +16,7 @@ const TopicList = ({ topicList }) => {
         </tr>
       </thead>
       <tbody>
-        {topicList.length > 0 ? topicList.map(topic => (
+        {topicList && topicList.length > 0 ? topicList.map(topic => (
           topic.loading === true ? <Spinner color="primary" /> : (
             <tr style={{
               paddingTop: "50px !important"
@@ -25,7 +26,7 @@ const TopicList = ({ topicList }) => {
                 <Row>
                   <Col xs="3" xl="2">
                     <Avatar
-                      src={topic.createdBy ? `https://ojirehprime-community-api.herokuapp.com/v1/community/photo/${topic.createdBy._id}`: `${Avatar}`}
+                      src={topic.createdBy ? `${BASE_URL}/community/photo/${topic.createdBy._id}`: `${Avatar}`}
                       size={50}
                     />
                   </Col>

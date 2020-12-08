@@ -51,7 +51,7 @@ const Header = () => {
             </NavItem>
           </Nav>
         </Collapse>
-        {token ? `Signed in as ${username}` : (
+        {token ? <span className="signed-in-user">Signed in as {username}</span> : (
           <>
             <NavLink
               href="/community_login"

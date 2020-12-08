@@ -9,6 +9,7 @@ import { localStorageAuth } from "../../helper/authenticate";
 import Avatar from "../../assets/img/user-avatar.png";
 import { Row, Col } from "reactstrap";
 
+const BASE_URL = process.env.REACT_APP_API_URL;
 const PreviousMsg = ({ 
     messages,
     onLikeChat,
@@ -33,7 +34,7 @@ const PreviousMsg = ({
                   width="50"
                   style={{ borderRadius: "50%" }}
                   onError={(i) => i.target.src=`${Avatar}`} alt=""
-                  src={`https://ojirehprime-community-api.herokuapp.com/v1/community/photo/${message.senderId}`}
+                  src={`${BASE_URL}/community/photo/${message.senderId}`}
                 />
               </div>
             </Col>

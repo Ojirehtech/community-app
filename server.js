@@ -26,7 +26,7 @@ const app = express();
 db();
 
 app.use(express.static(__dirname));
-app.use(express.static(path.resolve(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 //============================================================================
 // Setting up middlewares
@@ -38,20 +38,23 @@ app.use(cookieParser());
 //==================================================
 // Setting up Cross Origin Resource Sharing
 //==================================================
-app.use( ( req, res, next ) => {
+app.use(( req, res, next ) => {
   res.header( "Access-Control-Allow-Origin", "*" );
   res.header( "Access-Control-Allow-Credentials", true );
   res.header( "Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH" );
   res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Authorization, Content-Type, Accept, X-Auth-Token' );
 
   next();
-} );
+});
 
 //=============================================================================
 // Serving client files during production
-app.get('/', (req,res) => {
-  res.send({ message: "Welcome from express api" });
-});
+if (process.env.NODE_ENV === "production") {
+  app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+}
+
 
 
 //=============================================================================
@@ -112,3 +115,5 @@ server.listen(port, () => {
 });
 
 // https://github.com/pramodramdas/heroku_multi_dockers for travis ci/cd deployment using nginx and docker
+
+        

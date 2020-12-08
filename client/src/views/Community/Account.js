@@ -145,18 +145,7 @@ class Account extends Component{
             </div>
           </div>
           
-          <ul className="colorlib-bubbles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          
         </div>
       </div>
     );
