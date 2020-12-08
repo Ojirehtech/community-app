@@ -193,3 +193,7 @@ img.rounded {
   color: #fff !important;
   font-size: 14px !important;
 }
+
+.signed-in-user {
+  color: #fff;
+}
