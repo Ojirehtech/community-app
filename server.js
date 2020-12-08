@@ -26,7 +26,7 @@ const app = express();
 db();
 
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "/client/build")));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 //============================================================================
 // Setting up middlewares
@@ -47,19 +47,19 @@ app.use(( req, res, next ) => {
   next();
 });
 
-//=============================================================================
-// Serving client files during production
-if (process.env.NODE_ENV === "production") {
-  app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname + "/client/build/index.html"));
-  });
-}
 
-
-
+require("./middlware/prod")(app);
 //=============================================================================
 // Custom route configuration
 require("./middlware/routes")(app);
+
+//=============================================================================
+// Serving client files during production
+// if (process.env.NODE_ENV === "production") {
+  app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+// }
 
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
