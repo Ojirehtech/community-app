@@ -47,7 +47,7 @@ class Home extends Component{
         this.setState({ errMsg: topic.error });
       } else if (topic.success === true) {
         this.setState({ 
-          message: "Topic created successfully!",
+          // message: "Topic created successfully!",
           title: "",
           category: "",
           text: "",
@@ -76,6 +76,7 @@ class Home extends Component{
     const data = { title, category, text };
 
     await createTopic(data);
+
   }
 
   toggleModal = () => {
@@ -90,9 +91,6 @@ class Home extends Component{
     const { getByCategory } = this.props;
     this.setState({ [name]: e.target.value }, () => getByCategory(this.state.category));
   }
-
-
-
 
   render() {
     const { 

@@ -61,10 +61,10 @@ const Topic = ({
                       borderRadius: 0
                     }}
                   >
-                    {/* <option value="Category...">Category...</option>
+                    <option value="Category...">Category...</option>
                     {topicCategories.map(category => (
                       <option value={category._id}>{category.name}</option>
-                    ))} */}
+                    ))}
                   </Input>
                 </FormGroup>
               </Col>
